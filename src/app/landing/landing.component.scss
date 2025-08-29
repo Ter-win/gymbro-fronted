@@ -1,0 +1,12 @@
+main {
+  display: grid;
+  place-content: center;
+  justify-items: start;
+  min-height: calc(100vh - 12vh);
+  & h3 {
+    font-size: 1.5rem;
+  }
+  & button {
+    color: black;
+  }
+}

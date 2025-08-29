@@ -1,0 +1,20 @@
+<app-header-welcome></app-header-welcome>
+
+<main>
+  @if (!name) {
+  <h3>Introduce tu nombre</h3>
+  } @else {
+  <h3>Hola, {{ name }} 👋🏻</h3>
+  }
+
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre Apellidos</mat-label>
+    <input matInput #nameInput />
+    <mat-icon matSuffix>person</mat-icon>
+  </mat-form-field>
+
+  <button mat-button (click)="getName(nameInput.value)">
+    Continuar
+    <mat-icon>arrow_forward_ios</mat-icon>
+  </button>
+</main>
