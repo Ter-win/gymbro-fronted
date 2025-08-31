@@ -1,20 +1,64 @@
 <app-header-welcome></app-header-welcome>
 
 <main>
-  @if (!name) {
-  <h3>Introduce tu nombre</h3>
-  } @else {
-  <h3>Hola, {{ name }} 👋🏻</h3>
-  }
+  @if (formStep === 0) {
+  <span>¿Cómo te llamas?</span>
 
   <mat-form-field appearance="outline">
     <mat-label>Nombre Apellidos</mat-label>
     <input matInput #nameInput />
     <mat-icon matSuffix>person</mat-icon>
   </mat-form-field>
-
-  <button mat-button (click)="getName(nameInput.value)">
+  <button mat-button mat-stroked-button (click)="getName(nameInput.value)">
     Continuar
     <mat-icon>arrow_forward_ios</mat-icon>
   </button>
+  } @if (formStep === 1) {
+
+  <h3>Hola, {{ name }} 👋🏻</h3>
+  <span>Introduce tu peso</span>
+  <mat-form-field appearance="outline">
+    <mat-label>Peso</mat-label>
+    <input type="number" matInput #nameInput />
+    <mat-icon matSuffix>weight</mat-icon>
+  </mat-form-field>
+  <div>
+    <button mat-button (click)="getWeight(null)">Omitir por ahora</button>
+    <button mat-button mat-stroked-button (click)="getWeight(nameInput.value)">
+      Aceptar
+      <mat-icon>check</mat-icon>
+    </button>
+  </div>
+  } @if (formStep === 2 || formStep === 3) {
+  <h3>{{ name }}, ¿ Cuantos días entrenas a la semana?</h3>
+  <div class="day">
+    @for (day of daysButton; track $index) {
+    <button class="day__button" (click)="getTrainingDays(day)">
+      {{ day }}
+    </button>
+    }
+  </div>
+
+  } @if (formStep === 3) {
+  <h4>¿Qué días?</h4>
+  <mat-hint>Selcciona {{ totalTrainingDaysSelected }} días </mat-hint>
+  <div class="days_checkbox">
+    @for (day of days; track $index) {
+    <mat-checkbox
+      [ngModel]="selectedDays[$index]"
+      (ngModelChange)="onCheckboxChange($event, $index)"
+    >
+      {{ day }}
+    </mat-checkbox>
+    }
+  </div>
+  <button
+    mat-button
+    mat-stroked-button
+    [disabled]="isDaysDisabled"
+    (click)="onContinue()"
+  >
+    <mat-icon>arrow_forward_ios</mat-icon> Continuar
+  </button>
+  }
 </main>

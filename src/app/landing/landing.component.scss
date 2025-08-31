@@ -3,10 +3,52 @@ main {
   place-content: center;
   justify-items: start;
   min-height: calc(100vh - 12vh);
-  & h3 {
-    font-size: 1.5rem;
+  & span {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
   }
-  & button {
+  & h3 {
+    font-size: 2rem;
+  }
+  button:not(:disabled) {
     color: black;
   }
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.day {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  &__button {
+    border-radius: 50%;
+    width: 80px;
+    aspect-ratio: 1 / 1;
+    border: none;
+    background: black;
+    font-size: 1.4rem;
+    color: white !important;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 150ms ease-in-out;
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}
+
+.days_checkbox {
+  margin-block: 1rem;
 }
