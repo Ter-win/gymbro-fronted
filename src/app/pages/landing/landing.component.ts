@@ -32,6 +32,7 @@ export class LandingComponent {
     'Domingo',
   ];
   daysButton = [1, 2, 3, 4, 5, 6, 7];
+  daysSelected: string[] = [];
 
   name: string | null = null;
   weight: string | null = null;
@@ -73,5 +74,10 @@ export class LandingComponent {
 
   onContinue(): void {
     this.formStep++;
+    this.selectedDays.map((d) => {
+      if (d) {
+        
+      }
+    })
   }
 }
