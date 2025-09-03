@@ -10,6 +10,7 @@ main {
   }
   & h3 {
     font-size: 2rem;
+    margin: 1rem;
   }
   button:not(:disabled) {
     color: black;
@@ -51,4 +52,28 @@ input[type="number"] {
 
 .days_checkbox {
   margin-block: 1rem;
+}
+
+.go-back-button {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+}
+
+@media (max-width: 500px) {
+  .day {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    max-width: 400px;
+    margin-block: 1rem;
+    & h3 {
+      font-size: 1rem;
+    }
+    &__button {
+      width: 60px;
+      font-size: 0.9rem;
+      gap: 1rem;
+    }
+  }
 }

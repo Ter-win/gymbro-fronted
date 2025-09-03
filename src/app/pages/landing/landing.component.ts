@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { HeaderWelcomeComponent } from '../header-welcome/header-welcome.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DaysGymworkComponent } from './components/days-gymwork/days-gymwork.component';
 
 @Component({
   selector: 'app-landing',
@@ -17,6 +18,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatButtonModule,
     FormsModule,
     MatCheckboxModule,
+    DaysGymworkComponent,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
@@ -32,7 +34,8 @@ export class LandingComponent {
     'Domingo',
   ];
   daysButton = [1, 2, 3, 4, 5, 6, 7];
-  daysSelected: string[] = [];
+
+  @Output() daysSelected = new EventEmitter<boolean[]>();
 
   name: string | null = null;
   weight: string | null = null;
@@ -68,16 +71,20 @@ export class LandingComponent {
   onCheckboxChange(isActive: boolean, index: number): void {
     this.selectedDays[index] = isActive;
     this.isActiveCount = this.selectedDays.filter((d) => d).length;
-
     this.isDaysDisabled = this.isActiveCount !== this.totalTrainingDaysSelected;
+  }
+
+  onSetTrainingDays() {
+    this.selectedDays.filter((s) => s === true);
+    this.daysSelected.emit(this.selectedDays);
+    this.onContinue();
   }
 
   onContinue(): void {
     this.formStep++;
-    this.selectedDays.map((d) => {
-      if (d) {
-        
-      }
-    })
+  }
+
+  previousStep() {
+    this.formStep--;
   }
 }

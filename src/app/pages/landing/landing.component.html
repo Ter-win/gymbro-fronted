@@ -56,9 +56,14 @@
     mat-button
     mat-stroked-button
     [disabled]="isDaysDisabled"
-    (click)="onContinue()"
+    (click)="onSetTrainingDays()"
   >
     <mat-icon>arrow_forward_ios</mat-icon> Continuar
   </button>
+  } @if (formStep === 4) { @for (item of daysSelected; track $index) {
+  <app-days-gymwork></app-days-gymwork>
+
+  } } @if (formStep > 0) {
+  <button mat-button mat-stroked-button class="go-back-button" (click)="previousStep()">Volver a atrás</button>
   }
 </main>
