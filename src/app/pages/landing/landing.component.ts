@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { DaysGymworkComponent } from './components/days-gymwork/days-gymwork.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -19,6 +20,7 @@ import { DaysGymworkComponent } from './components/days-gymwork/days-gymwork.com
     FormsModule,
     MatCheckboxModule,
     DaysGymworkComponent,
+    RouterModule,
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.scss',
